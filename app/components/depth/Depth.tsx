@@ -1,20 +1,29 @@
 import AskTable from "./AskTable";
 import { getDepth } from "@/app/utils/httpClient";
+import { getTicker } from "@/app/utils/httpClient";
+import BidTable from "./BidTable";
 
 export default async function Depth({ market }: { market: string }) {
-  const depthData = await getDepth(market);
+  const depthData: { asks: [string, string][]; bids: [string, string][] } =
+    await getDepth(market);
+  const tickerData: { lastPrice: string } | null = await getTicker(market);
+  const ticker: string | null = tickerData ? tickerData.lastPrice : null;
+
   return (
     <div className="flex flex-col">
-      <TableHeader />
-      <AskTable asks={depthData.asks} />
-      {/* <BidTable /> */}
+      <TableHeader className="sticky top-0 z-10 bg-white" />
+      <AskTable asks={depthData.asks} tickerData={ticker} />
+      <BidTable bids={depthData.bids} />
     </div>
   );
 }
 
-const TableHeader = () => {
+const TableHeader = ({ className }: { className: string }) => {
   return (
-    <div className="flex gap-4">
+    <div
+      className={className}
+      style={{ display: "flex", justifyContent: "space-between" }}
+    >
       <h1>Price</h1>
       <h1>Size</h1>
       <h1>Total</h1>

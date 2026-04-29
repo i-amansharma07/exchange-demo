@@ -1,5 +1,11 @@
-export default function AskTable({ asks }: { asks: [string, string][] }) {
-  let filteredAsks: [string, string][] = asks.slice(0, 15);
+export default function AskTable({
+  asks,
+  tickerData,
+}: {
+  asks: [string, string][];
+  tickerData: string | null;
+}) {
+  let filteredAsks: [string, string][] = asks.slice(0, 25);
 
   /*
    * 129.93 10
@@ -48,6 +54,7 @@ export default function AskTable({ asks }: { asks: [string, string][] }) {
           total={total}
         />
       ))}
+      <h1 className="text-lg font-bold">${tickerData}</h1>
     </div>
   );
 }
@@ -77,7 +84,7 @@ function Ask({
         style={{
           position: "absolute",
           top: 0,
-          left: 0,
+          right: 0,
           width: `${(100 * total) / maxTotal}%`,
           height: "100%",
           background: "rgba(228, 75, 68, 0.325)",
