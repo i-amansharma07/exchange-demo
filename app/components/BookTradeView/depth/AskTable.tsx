@@ -45,14 +45,16 @@ export default function AskTable({
 
   return (
     <div>
-      {relevantAsks.map(([price, quantity, total]) => (
-        <Ask
-          maxTotal={maxTotal}
-          key={price}
-          price={price}
-          quantity={quantity}
-          total={total}
-        />
+      {relevantAsks.map(([price, quantity, total], index) => (
+        <div className="flex gap-5" key={index}>
+          <Ask
+            maxTotal={maxTotal}
+            key={price}
+            price={price}
+            quantity={quantity}
+            total={total}
+          />
+        </div>
       ))}
       <h1 className="text-lg font-bold">${tickerData}</h1>
     </div>
@@ -92,9 +94,9 @@ function Ask({
         }}
       ></div>
       <div className="flex justify-between text-xs w-full">
-        <div>{price}</div>
-        <div>{quantity}</div>
-        <div>{total?.toFixed(2)}</div>
+        <div className="flex-1">{price}</div>
+        <div className="flex-1">{quantity}</div>
+        <div className="flex-1">{total?.toFixed(2)}</div>
       </div>
     </div>
   );

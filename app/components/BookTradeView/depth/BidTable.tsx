@@ -53,9 +53,9 @@ function Bid({
         }}
       ></div>
       <div className="flex justify-between text-xs w-full">
-        <div>{price}</div>
-        <div>{quantity}</div>
-        <div>{total?.toFixed(2)}</div>
+        <div className="flex-1">{price}</div>
+        <div className="flex-1">{quantity}</div>
+        <div className="flex-1">{total?.toFixed(2)}</div>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import BookTradeViewPage from "@/app/components/BookTradeView/BookTradeViewPage";
+import TradeChart from "@/app/components/TradeChart";
 interface Props {
   params: Promise<{ market: string }>;
 }
@@ -8,7 +9,7 @@ export default async function Tradeview({ params }: Props) {
 
   return (
     <div className="m-5 flex gap-10 border border-black h-fit">
-      <h1>TradeChart</h1>
+      <TradeChart market={market} />
       <BookTradeViewPage market={market} />
       {/* <RightPanel /> */}
     </div>

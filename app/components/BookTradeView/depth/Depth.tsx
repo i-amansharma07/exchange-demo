@@ -10,8 +10,8 @@ export default async function Depth({ market }: { market: string }) {
   const ticker: string | null = tickerData ? tickerData.lastPrice : null;
 
   return (
-    <div className="flex flex-col">
-      <TableHeader className="sticky top-0 z-10 bg-white" />
+    <div className="flex flex-col w-50">
+      <TableHeader className="sticky top-0 z-10 bg-white flex justify-between" />
       <AskTable asks={depthData.asks} tickerData={ticker} />
       <BidTable bids={depthData.bids} />
     </div>
@@ -22,7 +22,6 @@ const TableHeader = ({ className }: { className: string }) => {
   return (
     <div
       className={className}
-      style={{ display: "flex", justifyContent: "space-between" }}
     >
       <h1>Price</h1>
       <h1>Size</h1>

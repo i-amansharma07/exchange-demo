@@ -1,6 +1,6 @@
-import Depth from "@/app/components/depth/Depth";
+import Depth from "./depth/Depth";
 import { BookTradeView } from "./BookTradeView";
-import { TradeView } from "../trade/TradeView";
+import { TradeView } from "./trade/TradeView";
 
 export default function BookTradeViewPage({ market }: { market: string }) {
   return (

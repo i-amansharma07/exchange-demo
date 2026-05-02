@@ -18,7 +18,12 @@ async function getTrades(market: string): Promise<ITrade[]> {
 }
 
 
+async function getKlines(market: string, interval: string, startTime: number, endTime: number) {
+  const response = await axios.get(`${BASE_URL}/klines?symbol=${market}&interval=${interval}&startTime=${startTime}&endTime=${endTime}`);
+  return response.data;
+}
+
 
 //http://localhost:3000/api/v1/depth?symbol=SOL_USDC_PERP
 
-export { getDepth, getTicker, getTrades };
+export { getDepth, getTicker, getTrades, getKlines };
