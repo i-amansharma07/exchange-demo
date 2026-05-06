@@ -7,7 +7,7 @@ export const BASE_URL = "wss://ws.backpack.exchange/"
 //{"method":"SUBSCRIBE","params":["bookTicker.SOL_USDC_PERP"],"id":3}
 //{"method":"SUBSCRIBE","params":["markPrice.SOL_USDC_PERP"],"id":4}
 
-export class SignalingManager {
+export default  class SignalingManager {
     private ws: WebSocket;
     private static instance: SignalingManager;
     private bufferedMessages: any[] = [];
